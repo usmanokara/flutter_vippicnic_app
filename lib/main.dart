@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vippicnic/screens/forgot_password_Screen.dart';
+import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
+import 'package:vippicnic/screens/home_screens/home_screen.dart';
+import 'package:vippicnic/screens/home_screens/new_post_screen.dart';
+import 'package:vippicnic/screens/home_screens/search_friend_screen.dart';
 import 'package:vippicnic/screens/login_screen.dart';
 import 'package:vippicnic/screens/new_password_screen.dart';
 import 'package:vippicnic/screens/signup/create_account_password.dart';
@@ -19,9 +23,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: Theme.of(context).copyWith(
-          appBarTheme: Theme.of(context)
-              .appBarTheme
-              .copyWith(brightness: Brightness.light)),
+        appBarTheme: Theme.of(context).appBarTheme.copyWith(
+              brightness: Brightness.light,
+            ),
+      ),
       routes: {
         WelcomeScreen.ID: (_) => WelcomeScreen(),
         LoginScreen.ID: (_) => LoginScreen(),
@@ -30,7 +35,11 @@ class MyApp extends StatelessWidget {
         VerifyCodeScreen.ID: (_) => VerifyCodeScreen(),
         VerifyEmailScreen.ID: (_) => VerifyEmailScreen(),
         CreateAccountScreen.ID: (_) => CreateAccountScreen(),
-        CreateAccountPassword.ID: (_) => CreateAccountPassword()
+        CreateAccountPassword.ID: (_) => CreateAccountPassword(),
+        HomeScreen.ID: (_) => HomeScreen(),
+        HomeBottomNavigation.ID: (_) => HomeBottomNavigation(),
+        NewPostScreen.ID: (_) => NewPostScreen(),
+        SearchFriendScreen.ID: (_) => SearchFriendScreen()
       },
       home: SplashScreen(),
     );

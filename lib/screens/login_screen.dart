@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/forgot_password_Screen.dart';
+import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
 import 'package:vippicnic/screens/signup/create_account_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -23,28 +24,14 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Image.asset(
-            "assets/images/login_back.png",
+            "assets/images/final.png",
             fit: BoxFit.fitWidth,
             width: double.infinity,
-          ),
-          Expanded(
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                    Colors.transparent,
-                    Colors.transparent,
-                    Colors.grey.withOpacity(0.4),
-                    Colors.white.withOpacity(0.6),
-                  ])),
-            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -71,7 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         color: kSecondryColor,
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(
+                            context, HomeBottomNavigation.ID),
                         child: Container(
                           width: double.infinity,
                           height: 55,
@@ -223,20 +211,22 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class InputTyoe extends StatelessWidget {
-  InputTyoe({this.hint, this.textInputType, this.onTextChange});
+  InputTyoe({this.hint, this.textInputType, this.onTextChange, this.textAlign});
 
   String hint;
   Function(String text) onTextChange;
   TextInputType textInputType;
+  TextAlign textAlign;
 
   @override
   Widget build(BuildContext context) {
     textInputType = textInputType ?? TextInputType.text;
+    textAlign = textAlign ?? TextAlign.center;
     return Container(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: TextFormField(
-          textAlign: TextAlign.center,
+          textAlign: textAlign,
           keyboardType: textInputType,
           onChanged: onTextChange,
           decoration: InputDecoration(

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
 
@@ -18,6 +19,7 @@ class _CreateAccountPasswordState extends State<CreateAccountPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -68,7 +70,7 @@ class _CreateAccountPasswordState extends State<CreateAccountPassword> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     color: kSecondryColor,
-                    onPressed: () {},
+                    onPressed: () =>Navigator.pushNamed(context, HomeBottomNavigation.ID),
                     child: Container(
                       width: double.infinity,
                       height: 55,
