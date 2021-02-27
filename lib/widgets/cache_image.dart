@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:vippicnic/screens/SelfieFullView.dart';
 
 import 'loading_progress.dart';
-
 
 class AppCacheImage extends StatelessWidget {
   final String imageUrl;
@@ -35,7 +35,13 @@ class AppCacheImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: this.onTap,
+      onTap: this.onTap ??
+          () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (_) => SelfiesFullImage(imgPath: this.imageUrl)));
+          },
       child: Container(
         margin: EdgeInsets.symmetric(
             horizontal: this.marginHorizontal ?? 0,
@@ -64,9 +70,9 @@ class AppCacheImage extends StatelessWidget {
             placeholder: (context, url) => Container(
                 width: height,
                 height: height,
-                child:  NativeProgress(
-                        showNative: this.showNative ?? false,
-                      )),
+                child: NativeProgress(
+                  showNative: this.showNative ?? false,
+                )),
             errorWidget: (context, url, error) => imageFailWidget == null
                 ? Icon(Icons.image, size: 0.80 * width.toDouble())
                 : imageFailWidget,

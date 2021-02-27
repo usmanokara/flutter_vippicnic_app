@@ -4,9 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/forgot_password_Screen.dart';
 import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
+import 'package:vippicnic/screens/login_with_email_screen.dart';
 import 'package:vippicnic/screens/signup/create_account_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -29,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(
         children: [
           Image.asset(
-            "assets/images/final.png",
+            "assets/images/hd_back.png",
             fit: BoxFit.fitWidth,
             width: double.infinity,
           ),
@@ -41,25 +43,62 @@ class _LoginScreenState extends State<LoginScreen> {
                 //Set container alignment  then wrap the column with singleChildScrollView
                 child: SingleChildScrollView(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      InputTyoe(
-                        hint: "Username",
-                        onTextChange: (text) {},
+                      MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.white,
+                        height: 55,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.google,
+                              color: Colors.red,
+                            ),
+                            SizedBox(width: 20),
+                            Text(
+                              'Continue with Google',
+                              style: GoogleFonts.openSans(
+                                fontSize: 16
+                              ),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {},
                       ),
-                      SizedBox(height: 10),
-                      InputTyoe(
-                        hint: "Password",
-                        onTextChange: (text) {},
-                        textInputType: TextInputType.visiblePassword,
+                      SizedBox(height: 15),
+                      MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        color: Colors.white,
+                        height: 55,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.facebookF,
+                              color: Colors.blue,
+                            ),
+                            SizedBox(width: 20),
+                            Text(
+                              'Continue with Facebook',
+                              style: GoogleFonts.openSans(
+                                  fontSize: 16
+                              ),
+                            ),
+                          ],
+                        ),
+                        onPressed: () {},
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 15),
                       MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         color: kSecondryColor,
                         onPressed: () => Navigator.pushNamed(
-                            context, HomeBottomNavigation.ID),
+                            context, LoginWithEmailScreen.ID),
                         child: Container(
                           width: double.infinity,
                           height: 55,
@@ -67,9 +106,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             children: [
                               Center(
                                 child: CenterText(
-                                  text: "login".toUpperCase(),
+                                  text: "Login with email",
                                   textColor: Colors.white,
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   isBold: true,
                                 ),
                               ),
@@ -86,88 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          OutlineButton(
-                            onPressed: () {
-                              setState(() {
-                                _keepMeLogedIn = !_keepMeLogedIn;
-                              });
-                            },
-                            shape: CircleBorder(),
-                            borderSide: BorderSide(
-                              color: kPrimaryColor.withOpacity(0.5),
-                              //Color of the border
-                              style: BorderStyle.solid,
-                              //Style of the border
-                              width: 1, //width of the border
-                            ),
-                            padding: EdgeInsets.all(0),
-                            child: _keepMeLogedIn
-                                ? Icon(
-                                    Icons.check,
-                                    color: kPrimaryColor,
-                                    size: 25,
-                                  )
-                                : Container(
-                                    width: 25,
-                                    height: 25,
-                                    child: SizedBox(),
-                                  ),
-                          ),
-                          CenterText(
-                              text: "Keep me logged in ",
-                              textColor: kPrimaryColor,
-                              fontSize: 16),
-                          Spacer(),
-                          GestureDetector(
-                            onTap: () => Navigator.pushNamed(
-                                context, ForgotPasswordScreen.ID),
-                            child: CenterText(
-                                fontWeight: FontWeight.w700,
-                                text: "Forgot?",
-                                textColor: kSecondryColor,
-                                fontSize: 18),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      OutlineButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
-                        borderSide: BorderSide(
-                          color: kPrimaryColor, //Color of the border
-                          style: BorderStyle.solid, //Style of the border
-                          width: 1, //width of the border
-                        ),
-                        onPressed: () => Navigator.pushNamed(
-                            context, CreateAccountScreen.ID),
-                        child: Container(
-                          width: double.infinity,
-                          height: 55,
-                          child: Stack(
-                            children: [
-                              Center(
-                                child: CenterText(
-                                    text: "Create account".toUpperCase(),
-                                    textColor: kPrimaryColor,
-                                    fontSize: 20),
-                              ),
-                              Positioned(
-                                  right: 5,
-                                  top: 0,
-                                  bottom: 0,
-                                  child: Icon(
-                                    Icons.chevron_right,
-                                    color: Colors.black,
-                                    size: 30,
-                                  ))
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 50),
                       Center(
                         child: RichText(
                           textAlign: TextAlign.center,
@@ -197,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20)
+                      SizedBox(height: 50),
                     ],
                   ),
                 ),

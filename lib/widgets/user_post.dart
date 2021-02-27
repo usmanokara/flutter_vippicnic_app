@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vippicnic/screens/home_screens/post_detail_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 
 import 'cache_image.dart';
@@ -34,52 +35,52 @@ class _UserPostState extends State<UserPost> {
             ),
             Expanded(
                 child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CenterText(
+                            text: widget.userName,
+                            textColor: kPrimaryColor,
+                            fontSize: 18,
+                            textStyle: GoogleFonts.openSans(),
+                            fontWeight: FontWeight.w900,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Card(
+                              color: kPrimaryColor.withOpacity(0.10),
+                              child: SizedBox(
+                                width: 10,
+                                height: 10,
+                              ),
+                              shape: CircleBorder(),
+                            ),
+                          ),
+                          CenterText(
+                            text: "11 fev",
+                            textColor: kPrimaryColor.withOpacity(0.50),
+                            fontSize: 16,
+                            textStyle: GoogleFonts.openSans(),
+                            fontWeight: FontWeight.w900,
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 5),
                       CenterText(
-                        text: widget.userName,
-                        textColor: kPrimaryColor,
+                        maxLines: 2,
+                        text: widget.message,
+                        textColor: kPrimaryColor.withOpacity(1),
                         fontSize: 18,
                         textStyle: GoogleFonts.openSans(),
-                        fontWeight: FontWeight.w900,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Card(
-                          color: kPrimaryColor.withOpacity(0.10),
-                          child: SizedBox(
-                            width: 10,
-                            height: 10,
-                          ),
-                          shape: CircleBorder(),
-                        ),
-                      ),
-                      CenterText(
-                        text: "11 fev",
-                        textColor: kPrimaryColor.withOpacity(0.50),
-                        fontSize: 16,
-                        textStyle: GoogleFonts.openSans(),
-                        fontWeight: FontWeight.w900,
                       )
                     ],
                   ),
-                  SizedBox(height: 5),
-                  CenterText(
-                    maxLines: 2,
-                    text: widget.message,
-                    textColor: kPrimaryColor.withOpacity(1),
-                    fontSize: 18,
-                    textStyle: GoogleFonts.openSans(),
-                  )
-                ],
-              ),
-            ))
+                ))
           ],
         ),
         SizedBox(height: 10),
@@ -98,6 +99,8 @@ class _UserPostState extends State<UserPost> {
                   },
                   children: widget.imageList.map((e) {
                     return AppCacheImage(
+                      onTap: () =>
+                          Navigator.pushNamed(context, PostDetailScreen.ID),
                       width: double.infinity,
                       height: 250,
                       imageUrl: e,
@@ -184,20 +187,22 @@ class ActionWidget extends StatelessWidget {
 }
 
 class UserCircleAvatar extends StatelessWidget {
-  UserCircleAvatar({this.url});
+  UserCircleAvatar({this.url, this.size});
 
   String url;
+  double size;
 
   Widget build(BuildContext context) {
+    size = size ?? 70;
     return Card(
       elevation: 5,
       shape: CircleBorder(),
       child: Padding(
         padding: EdgeInsets.all(5),
         child: AppCacheImage(
-          width: 70,
-          height: 70,
-          round: 35,
+          width: size,
+          height: size,
+          round: size / 2,
           imageUrl: url,
         ),
       ),

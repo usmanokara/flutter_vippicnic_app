@@ -6,6 +6,8 @@ import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
 import 'package:vippicnic/widgets/user_post.dart';
 
+import 'friend_profile_screen.dart';
+
 class SearchFriendScreen extends StatefulWidget {
   static String ID = "/search_screen";
 
@@ -105,45 +107,60 @@ class FriendListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
-      child: Row(
-        children: [
-          UserCircleAvatar(
-            url:
-                "https://yt3.ggpht.com/ytc/AAUvwnhzvaxJpwB_A0o9pMGjS2Kj2ZbtGJ40myJfKm858A=s900-c-k-c0x00ffffff-no-rj",
-          ),
-          SizedBox(width: 10),
-          Expanded(
-            child: CenterText(
-              text: "UserName",
-              textColor: kPrimaryColor,
-              fontSize: 18,
-              fontWeight: FontWeight.w900,
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(context, FriendProfileScreen.ID),
+        child: Row(
+          children: [
+            UserCircleAvatar(
+              url:
+                  "https://yt3.ggpht.com/ytc/AAUvwnhzvaxJpwB_A0o9pMGjS2Kj2ZbtGJ40myJfKm858A=s900-c-k-c0x00ffffff-no-rj",
             ),
-          ),
-          Expanded(
-            child: OutlineButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)),
-              borderSide: BorderSide(
-                color: kPrimaryColor.withOpacity(0.1),
-                style: BorderStyle.solid,
-                width: 1,
-              ),
-              onPressed: () {},
-              child: Container(
-                width: double.infinity,
-                height: 40,
-                child: Center(
-                  child: CenterText(
-                      text: "Follow",
-                      textColor: kPrimaryColor,
-                      fontSize: 20),
-                ),
+            SizedBox(width: 10),
+            Expanded(
+              child: CenterText(
+                text: "UserName",
+                textColor: kPrimaryColor,
+                fontSize: 18,
+                fontWeight: FontWeight.w900,
               ),
             ),
+            OutLineCustomButton(
+              text: "Follow",
+              click: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class OutLineCustomButton extends StatelessWidget {
+  OutLineCustomButton({this.text, this.click});
+
+  String text;
+  Function click;
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlineButton(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+      borderSide: BorderSide(
+        color: kPrimaryColor.withOpacity(0.1),
+        style: BorderStyle.solid,
+        width: 1,
+      ),
+      onPressed: click,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+        child: Container(
+          height: 40,
+          child: Center(
+            child:
+                CenterText(text: text, textColor: kPrimaryColor, fontSize: 20),
           ),
-        ],
+        ),
       ),
     );
   }

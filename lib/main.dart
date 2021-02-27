@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:vippicnic/screens/forgot_password_Screen.dart';
+import 'package:vippicnic/screens/home_screens/chat/create_group_screen.dart';
+import 'package:vippicnic/screens/home_screens/friend_profile_screen.dart';
 import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
 import 'package:vippicnic/screens/home_screens/home_screen.dart';
 import 'package:vippicnic/screens/home_screens/new_post_screen.dart';
+import 'package:vippicnic/screens/home_screens/post_detail_screen.dart';
 import 'package:vippicnic/screens/home_screens/search_friend_screen.dart';
 import 'package:vippicnic/screens/login_screen.dart';
+import 'package:vippicnic/screens/login_with_email_screen.dart';
 import 'package:vippicnic/screens/new_password_screen.dart';
 import 'package:vippicnic/screens/signup/create_account_password.dart';
 import 'package:vippicnic/screens/signup/create_account_screen.dart';
@@ -39,7 +43,11 @@ class MyApp extends StatelessWidget {
         HomeScreen.ID: (_) => HomeScreen(),
         HomeBottomNavigation.ID: (_) => HomeBottomNavigation(),
         NewPostScreen.ID: (_) => NewPostScreen(),
-        SearchFriendScreen.ID: (_) => SearchFriendScreen()
+        SearchFriendScreen.ID: (_) => SearchFriendScreen(),
+        LoginWithEmailScreen.ID: (_) => LoginWithEmailScreen(),
+        FriendProfileScreen.ID: (_) => FriendProfileScreen(),
+        PostDetailScreen.ID: (_) => PostDetailScreen(),
+        CreateGroupScreen.ID: (_) => CreateGroupScreen()
       },
       home: SplashScreen(),
     );

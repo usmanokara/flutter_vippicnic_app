@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vippicnic/screens/home_screens/chat/create_group_screen.dart';
 import 'package:vippicnic/screens/home_screens/chat/single_chat_list_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -25,10 +26,16 @@ class _ChatListScreenState extends State<ChatListScreen> {
         shape: CircleBorder(),
         color: Colors.white,
         margin: EdgeInsets.all(0),
-        child: Icon(
-          Icons.add_circle,
-          color: Color(0xFF19623C),
-          size: 70,
+        child: GestureDetector(
+          onTap: () {
+            if (selectedIndex == 1)
+              Navigator.pushNamed(context, CreateGroupScreen.ID);
+          },
+          child: Icon(
+            Icons.add_circle,
+            color: Color(0xFF19623C),
+            size: 70,
+          ),
         ),
       ),
       body: SafeArea(

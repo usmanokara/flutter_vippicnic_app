@@ -86,13 +86,15 @@ class SettingsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Row(
         children: [
           SvgPicture.asset("assets/svg/$images.svg"),
           SizedBox(width: 10),
           CenterText(
-              text: text, textColor: kPrimaryColor.withOpacity(0.5), fontSize: 20)
+              text: text,
+              textColor: kPrimaryColor.withOpacity(0.5),
+              fontSize: 20)
         ],
       ),
     );
