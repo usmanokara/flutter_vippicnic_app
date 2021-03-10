@@ -5,7 +5,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/forgot_password_Screen.dart';
 import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
 import 'package:vippicnic/screens/login_with_email_screen.dart';
@@ -26,7 +25,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       body: Stack(
         children: [
@@ -36,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
             width: double.infinity,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: SafeArea(
               child: Container(
                 alignment: Alignment.bottomCenter,
@@ -49,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         color: Colors.white,
-                        height: 55,
+                        height: 50,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -60,9 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(width: 20),
                             Text(
                               'Continue with Google',
-                              style: GoogleFonts.openSans(
-                                fontSize: 16
-                              ),
+                              style: TextStyle(
+                                  fontFamily: 'open_regular', fontSize: 16),
                             ),
                           ],
                         ),
@@ -73,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)),
                         color: Colors.white,
-                        height: 55,
+                        height: 50,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -84,9 +81,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             SizedBox(width: 20),
                             Text(
                               'Continue with Facebook',
-                              style: GoogleFonts.openSans(
-                                  fontSize: 16
-                              ),
+                              style: TextStyle(
+                                  fontFamily: 'open_regular', fontSize: 16),
                             ),
                           ],
                         ),
@@ -101,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             context, LoginWithEmailScreen.ID),
                         child: Container(
                           width: double.infinity,
-                          height: 55,
+                          height: 50,
                           child: Stack(
                             children: [
                               Center(
@@ -131,7 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             text: "By tapping Log In, you agree with our\n",
-                            style: GoogleFonts.openSans(
+                            style: TextStyle(
+                              fontFamily: 'open_regular',
                               fontSize: 16.0,
                               color: kPrimaryColor,
                             ),
@@ -141,7 +138,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ..onTap = () {},
                                 text: "Terms of services",
                                 style: TextStyle(
-                                    decoration: TextDecoration.underline),
+                                    decoration: TextDecoration.underline,
+                                    fontFamily: 'open_regular'),
                               ),
                               TextSpan(text: ' and '),
                               TextSpan(
@@ -149,7 +147,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ..onTap = () {},
                                 text: 'Privacy policy',
                                 style: TextStyle(
-                                    decoration: TextDecoration.underline),
+                                    decoration: TextDecoration.underline,
+                                    fontFamily: 'open_regular'),
                               ),
                             ],
                           ),
@@ -169,21 +168,30 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class InputTyoe extends StatelessWidget {
-  InputTyoe({this.hint, this.textInputType, this.onTextChange, this.textAlign});
+  InputTyoe(
+      {this.hint,
+      this.textInputType,
+      this.onTextChange,
+      this.textAlign,
+      this.text});
 
   String hint;
   Function(String text) onTextChange;
   TextInputType textInputType;
   TextAlign textAlign;
+  String text;
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     textInputType = textInputType ?? TextInputType.text;
-    textAlign = textAlign ?? TextAlign.center;
+    textAlign = textAlign ?? TextAlign.start;
+    textEditingController.text = text;
     return Container(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: TextFormField(
+          controller: textEditingController,
           textAlign: textAlign,
           keyboardType: textInputType,
           onChanged: onTextChange,
@@ -194,11 +202,13 @@ class InputTyoe extends StatelessWidget {
               enabledBorder: InputBorder.none,
               errorBorder: InputBorder.none,
               disabledBorder: InputBorder.none,
-              labelStyle: GoogleFonts.openSans(fontWeight: FontWeight.w500),
-              hintStyle: GoogleFonts.openSans(fontWeight: FontWeight.w500)),
+              labelStyle: TextStyle(
+                  fontFamily: 'open_regular', fontWeight: FontWeight.w500),
+              hintStyle: TextStyle(
+                  fontFamily: 'open_regular', fontWeight: FontWeight.w500)),
         ),
       ),
-      height: 55,
+      height: 50,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           color: Colors.white,

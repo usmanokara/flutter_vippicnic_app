@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/login_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -28,30 +27,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   text: "Welcome to ",
                   textColor: kPrimaryColor,
                   fontSize: 18,
-                  textStyle: GoogleFonts.openSans(),
                   isBold: true,
                   isCenter: true,
-                  fontWeight: FontWeight.w900,
+                  textStyle: TextStyle(fontFamily: 'open_bold'),
                 ),
                 CenterText(
                   text: "Vip Picnic",
                   textColor: kPrimaryColor.withOpacity(0.5),
-                  fontSize: 30,
-                  textStyle: GoogleFonts.openSans(),
+                  fontSize: 28,
                   isCenter: true,
+
                 ),
               ],
             ),
             SvgPicture.asset(
               "assets/svg/welcome.svg",
-              width: MediaQuery.of(context).size.width * 0.65,
+              width: MediaQuery.of(context).size.width * 0.50,
             ),
             CenterText(
               text:
                   "Create your event\nAdd and invite Friends\nRegister your moments",
               textColor: kPrimaryColor.withOpacity(0.8),
               fontSize: 22,
-              textStyle: GoogleFonts.openSans(),
               isCenter: true,
             ),
             Column(

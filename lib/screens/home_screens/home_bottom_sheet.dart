@@ -33,7 +33,7 @@ class _HomeBottomNavigationState extends State<HomeBottomNavigation> {
         children: [
           Expanded(child: screens[selectedIndex]),
           Container(
-            height: 80,
+            height: 60,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topRight: Radius.circular(30),
@@ -70,7 +70,7 @@ class _HomeBottomNavigationState extends State<HomeBottomNavigation> {
                   onTap: () => Navigator.pushNamed(context, NewPostScreen.ID),
                   child: Icon(
                     Icons.add_circle,
-                    size: 70,
+                    size: 55,
                     color: kSecondryColor,
                   ),
                 ),
@@ -125,15 +125,15 @@ class BottomItem extends StatelessWidget {
             ),
             SvgPicture.asset(
               "assets/svg/$icon.svg",
-              width: 30,
-              height: 30,
+              width: 25,
+              height: 25,
               color:
                   isSelected ? kPrimaryColor : kPrimaryColor.withOpacity(0.5),
             ),
             SizedBox(height: 5),
             CenterText(
               text: text,
-              fontSize: 16,
+              fontSize: 12,
               fontWeight: FontWeight.w500,
               textColor:
                   isSelected ? kPrimaryColor : kPrimaryColor.withOpacity(0.5),

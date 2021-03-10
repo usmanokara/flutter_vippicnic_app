@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/signup/verify_code_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -34,7 +33,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     text: "Verify Your E-mail",
                     textColor: kPrimaryColor,
                     fontSize: 25,
-                    textStyle: GoogleFonts.openSans(),
+                    textStyle: TextStyle(
+                      fontFamily: 'open_regular'),
                     isBold: true,
                     fontWeight: FontWeight.w900,
                     isCenter: true,
@@ -45,7 +45,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                         "Please enter your E-mail Address\nto receive the verify Code",
                     textColor: kPrimaryColor.withOpacity(0.9),
                     fontSize: 18,
-                    textStyle: GoogleFonts.openSans(),
                     isCenter: true,
                   ),
                   SizedBox(height: 30),
@@ -62,7 +61,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                         Navigator.pushNamed(context, VerifyCodeScreen.ID),
                     child: Container(
                       width: double.infinity,
-                      height: 55,
+                      height: 50,
                       child: Stack(
                         children: [
                           Center(
@@ -70,7 +69,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                               text: "continue".toUpperCase(),
                               textColor: Colors.white,
                               fontSize: 20,
-                              isBold: true,
                             ),
                           ),
                           Positioned(

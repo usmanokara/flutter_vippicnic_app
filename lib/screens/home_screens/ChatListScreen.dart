@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/home_screens/chat/create_group_screen.dart';
 import 'package:vippicnic/screens/home_screens/chat/single_chat_list_screen.dart';
+import 'package:vippicnic/screens/home_screens/chat/single_chat_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
 import 'package:vippicnic/widgets/user_post.dart';
@@ -48,14 +48,13 @@ class _ChatListScreenState extends State<ChatListScreen> {
               SizedBox(height: 20),
               Row(
                 children: [
-                  Icon(Icons.arrow_back, color: kPrimaryColor, size: 40),
+                  Icon(Icons.arrow_back, color: Colors.white, size: 40),
                   Expanded(
                     child: CenterText(
                       text: "Messages",
                       textColor: kPrimaryColor,
-                      fontSize: 25,
+                      fontSize: 20,
                       isCenter: true,
-                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   Container(
@@ -112,58 +111,60 @@ class ChatLIstItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: kPrimaryColor.withOpacity(0.05)),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              UserCircleAvatar(
-                url:
-                    "https://yt3.ggpht.com/ytc/AAUvwnhzvaxJpwB_A0o9pMGjS2Kj2ZbtGJ40myJfKm858A=s900-c-k-c0x00ffffff-no-rj",
-              ),
-              Expanded(
-                  child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: CenterText(
-                            text: "UserName",
-                            textColor: kPrimaryColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                        CenterText(
-                          text: "Today",
-                          textColor: kPrimaryColor.withOpacity(0.8),
-                          fontSize: 16,
-                          textStyle: GoogleFonts.openSans(),
-                          fontWeight: FontWeight.w400,
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 5),
-                    CenterText(
-                      maxLines: 2,
-                      text: "Hi Good morning, how we...",
-                      textColor: kPrimaryColor.withOpacity(1),
-                      fontSize: 18,
-                      textStyle: GoogleFonts.openSans(),
-                    )
-                  ],
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(context, SingleChatScreen.ID),
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: kPrimaryColor.withOpacity(0.05)),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                UserCircleAvatar(
+                  url:
+                      "https://yt3.ggpht.com/ytc/AAUvwnhzvaxJpwB_A0o9pMGjS2Kj2ZbtGJ40myJfKm858A=s900-c-k-c0x00ffffff-no-rj",
                 ),
-              ))
-            ],
+                Expanded(
+                    child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: CenterText(
+                              text: "UserName",
+                              textColor: kPrimaryColor,
+                              fontSize: 16,
+                              textStyle: TextStyle(fontFamily: 'open_semibold'),
+                            ),
+                          ),
+                          CenterText(
+                            text: "Today",
+                            textColor: kPrimaryColor.withOpacity(0.8),
+                            fontSize: 14,
+                            textStyle: TextStyle(fontFamily: 'open_regular'),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 5),
+                      CenterText(
+                        maxLines: 2,
+                        text: "Hi Good morning, how we...",
+                        textColor: kPrimaryColor.withOpacity(1),
+                        fontSize: 15,
+                        textStyle: TextStyle(fontFamily: 'open_regular'),
+                      )
+                    ],
+                  ),
+                ))
+              ],
+            ),
           ),
         ),
       ),

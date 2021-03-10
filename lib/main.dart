@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:vippicnic/screens/forgot_password_Screen.dart';
 import 'package:vippicnic/screens/home_screens/chat/create_group_screen.dart';
+import 'package:vippicnic/screens/home_screens/chat/multiple_chat_screen.dart';
+import 'package:vippicnic/screens/home_screens/chat/single_chat_screen.dart';
 import 'package:vippicnic/screens/home_screens/friend_profile_screen.dart';
 import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
 import 'package:vippicnic/screens/home_screens/home_screen.dart';
 import 'package:vippicnic/screens/home_screens/new_post_screen.dart';
+import 'package:vippicnic/screens/home_screens/package/cutomize_event_screen.dart';
+import 'package:vippicnic/screens/home_screens/package/order_package_screen.dart';
+import 'package:vippicnic/screens/home_screens/package/packge_detail_screen.dart';
+import 'package:vippicnic/screens/home_screens/package/purchase_package_screen.dart';
 import 'package:vippicnic/screens/home_screens/post_detail_screen.dart';
+import 'package:vippicnic/screens/home_screens/profile/edit_profile_screen.dart';
 import 'package:vippicnic/screens/home_screens/search_friend_screen.dart';
 import 'package:vippicnic/screens/login_screen.dart';
 import 'package:vippicnic/screens/login_with_email_screen.dart';
@@ -47,7 +54,14 @@ class MyApp extends StatelessWidget {
         LoginWithEmailScreen.ID: (_) => LoginWithEmailScreen(),
         FriendProfileScreen.ID: (_) => FriendProfileScreen(),
         PostDetailScreen.ID: (_) => PostDetailScreen(),
-        CreateGroupScreen.ID: (_) => CreateGroupScreen()
+        CreateGroupScreen.ID: (_) => CreateGroupScreen(),
+        EditProfileScreen.ID: (_) => EditProfileScreen(),
+        PurchasePackageScreen.ID: (_) => PurchasePackageScreen(),
+        PackageDetailScreen.ID: (_) => PackageDetailScreen(),
+        OrderPackageScreen.ID: (_) => OrderPackageScreen(),
+        CustomizeEventScreen.ID: (_) => CustomizeEventScreen(),
+        SingleChatScreen.ID: (_) => SingleChatScreen(),
+        MultipleChatScreen.ID: (_) => MultipleChatScreen()
       },
       home: SplashScreen(),
     );

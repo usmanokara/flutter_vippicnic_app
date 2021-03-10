@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -42,7 +41,8 @@ class _CreateAccountPasswordState extends State<CreateAccountPassword> {
                     text: "Create Password:",
                     textColor: kPrimaryColor,
                     fontSize: 25,
-                    textStyle: GoogleFonts.openSans(),
+                    textStyle: TextStyle(
+                      fontFamily: 'open_regular',),
                     isBold: true,
                     fontWeight: FontWeight.w900,
                     isCenter: true,
@@ -52,16 +52,19 @@ class _CreateAccountPasswordState extends State<CreateAccountPassword> {
                     text: "Enter your new password",
                     textColor: kPrimaryColor.withOpacity(0.8),
                     fontSize: 18,
-                    textStyle: GoogleFonts.openSans(),
+                    textStyle: TextStyle(
+                      fontFamily: 'open_regular',),
                     isCenter: true,
                   ),
                   SizedBox(height: 20),
                   InputTyoe(
+                    textAlign: TextAlign.center,
                     hint: "New Password",
                     onTextChange: (text) {},
                   ),
                   SizedBox(height: 10),
                   InputTyoe(
+                    textAlign: TextAlign.center,
                     hint: "Confirm Password",
                     onTextChange: (text) {},
                   ),
@@ -73,7 +76,7 @@ class _CreateAccountPasswordState extends State<CreateAccountPassword> {
                     onPressed: () =>Navigator.pushNamed(context, HomeBottomNavigation.ID),
                     child: Container(
                       width: double.infinity,
-                      height: 55,
+                      height: 50,
                       child: Stack(
                         children: [
                           Center(

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/signup/create_account_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -53,10 +52,12 @@ class _SearchFriendScreenState extends State<SearchFriendScreen> {
                                 enabledBorder: InputBorder.none,
                                 errorBorder: InputBorder.none,
                                 disabledBorder: InputBorder.none,
-                                labelStyle: GoogleFonts.openSans(
+                                labelStyle: TextStyle(
+                                    fontFamily: 'open_regular',
                                     fontWeight: FontWeight.w500,
                                     color: kPrimaryColor),
-                                hintStyle: GoogleFonts.openSans(
+                                hintStyle: TextStyle(
+                                    fontFamily: 'open_regular',
                                     fontWeight: FontWeight.w500,
                                     color: kPrimaryColor)),
                           ),
@@ -121,8 +122,8 @@ class FriendListItem extends StatelessWidget {
               child: CenterText(
                 text: "UserName",
                 textColor: kPrimaryColor,
-                fontSize: 18,
-                fontWeight: FontWeight.w900,
+                fontSize: 16,
+                textStyle: TextStyle(fontFamily: 'open_semibold'),
               ),
             ),
             OutLineCustomButton(
@@ -158,7 +159,7 @@ class OutLineCustomButton extends StatelessWidget {
           height: 40,
           child: Center(
             child:
-                CenterText(text: text, textColor: kPrimaryColor, fontSize: 20),
+                CenterText(text: text, textColor: kPrimaryColor, fontSize: 17),
           ),
         ),
       ),

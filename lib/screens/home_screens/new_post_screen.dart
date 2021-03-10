@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/login_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -104,9 +103,11 @@ class _NewPostScreenState extends State<NewPostScreen> {
                               enabledBorder: InputBorder.none,
                               errorBorder: InputBorder.none,
                               disabledBorder: InputBorder.none,
-                              labelStyle: GoogleFonts.openSans(
+                              labelStyle: TextStyle(
+                                  fontFamily: 'open_regular',
                                   fontWeight: FontWeight.w500),
-                              hintStyle: GoogleFonts.openSans(
+                              hintStyle: TextStyle(
+                                  fontFamily: 'open_regular',
                                   fontWeight: FontWeight.w500)),
                         ),
                       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/home_screens/post_detail_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 
@@ -35,52 +34,48 @@ class _UserPostState extends State<UserPost> {
             ),
             Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CenterText(
-                            text: widget.userName,
-                            textColor: kPrimaryColor,
-                            fontSize: 18,
-                            textStyle: GoogleFonts.openSans(),
-                            fontWeight: FontWeight.w900,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Card(
-                              color: kPrimaryColor.withOpacity(0.10),
-                              child: SizedBox(
-                                width: 10,
-                                height: 10,
-                              ),
-                              shape: CircleBorder(),
-                            ),
-                          ),
-                          CenterText(
-                            text: "11 fev",
-                            textColor: kPrimaryColor.withOpacity(0.50),
-                            fontSize: 16,
-                            textStyle: GoogleFonts.openSans(),
-                            fontWeight: FontWeight.w900,
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 5),
                       CenterText(
-                        maxLines: 2,
-                        text: widget.message,
-                        textColor: kPrimaryColor.withOpacity(1),
-                        fontSize: 18,
-                        textStyle: GoogleFonts.openSans(),
-                      )
+                        text: widget.userName,
+                        textColor: kPrimaryColor,
+                        fontSize: 17,
+                        textStyle: TextStyle(fontFamily: 'open_semibold'),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: Card(
+                          color: kPrimaryColor.withOpacity(0.10),
+                          child: SizedBox(
+                            width: 10,
+                            height: 10,
+                          ),
+                          shape: CircleBorder(),
+                        ),
+                      ),
+                      CenterText(
+                          text: "11 fev",
+                          textColor: kPrimaryColor.withOpacity(0.50),
+                          fontSize: 15,
+                          textStyle: TextStyle(fontFamily: 'open_semibold'))
                     ],
                   ),
-                ))
+                  SizedBox(height: 5),
+                  CenterText(
+                    maxLines: 2,
+                    text: widget.message,
+                    textColor: kPrimaryColor.withOpacity(1),
+                    fontSize: 18,
+                  )
+                ],
+              ),
+            ))
           ],
         ),
         SizedBox(height: 10),
@@ -132,7 +127,7 @@ class _UserPostState extends State<UserPost> {
             ],
           ),
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -153,7 +148,7 @@ class _UserPostState extends State<UserPost> {
             )
           ],
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 15),
         Divider(
           height: 1,
           color: kPrimaryColor.withOpacity(0.30),
@@ -176,11 +171,12 @@ class ActionWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SvgPicture.asset("assets/svg/$icon",
-            width: 30, height: 30, color: kPrimaryColor.withOpacity(0.55)),
+            width: 22, height: 22, color: kPrimaryColor.withOpacity(0.55)),
+        SizedBox(width: 5),
         CenterText(
             text: text,
             textColor: kPrimaryColor.withOpacity(0.55),
-            fontSize: 25)
+            fontSize: 18)
       ],
     );
   }
@@ -193,7 +189,7 @@ class UserCircleAvatar extends StatelessWidget {
   double size;
 
   Widget build(BuildContext context) {
-    size = size ?? 70;
+    size = size ?? 50;
     return Card(
       elevation: 5,
       shape: CircleBorder(),

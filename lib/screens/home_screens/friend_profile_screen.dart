@@ -78,19 +78,21 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
                 UserCircleAvatar(
                   url:
                       "https://yt3.ggpht.com/ytc/AAUvwnhzvaxJpwB_A0o9pMGjS2Kj2ZbtGJ40myJfKm858A=s900-c-k-c0x00ffffff-no-rj",
-                  size: 120,
+                  size: 100,
                 ),
                 SizedBox(height: 10),
                 CenterText(
                   text: "User name",
                   textColor: kPrimaryColor,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w900,
+                  fontSize: 20,
+                  textStyle: TextStyle(
+                    fontFamily: 'open_semibold'
+                  ),
                 ),
                 CenterText(
                   text: "@Username",
                   textColor: kPrimaryColor,
-                  fontSize: 17,
+                  fontSize: 15,
                 ),
                 SizedBox(height: 25),
                 Row(
@@ -162,7 +164,9 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
                                         text: "Bio:",
                                         textColor: kPrimaryColor,
                                         fontSize: 18,
-                                        fontWeight: FontWeight.w900,
+                                        textStyle: TextStyle(
+                                          fontFamily: 'open_semibold'
+                                        ),
                                       ),
                                     )
                                   ],
@@ -173,7 +177,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
                                   text:
                                       "Musician since 2018, available to new events. Love plant and planet 🌱",
                                   textColor: kPrimaryColor.withOpacity(0.7),
-                                  fontSize: 18,
+                                  fontSize: 15,
                                 )
                               ],
                             ),
@@ -231,8 +235,10 @@ class profileItem extends StatelessWidget {
         CenterText(
           text: this.value,
           textColor: kPrimaryColor,
-          fontSize: 16,
-          fontWeight: FontWeight.w900,
+          fontSize: 18,
+          textStyle: TextStyle(
+            fontFamily: 'open_semibold'
+          ),
         ),
         CenterText(
           text: this.title,

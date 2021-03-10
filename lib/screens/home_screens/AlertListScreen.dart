@@ -21,17 +21,16 @@ class _AlertListScreenState extends State<AlertListScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Row(
                 children: [
-                  Icon(Icons.arrow_back, color: kPrimaryColor, size: 40),
+                  Icon(Icons.arrow_back, color: Colors.white, size: 40),
                   Expanded(
                     child: CenterText(
                       text: "Alerts",
                       textColor: kPrimaryColor,
-                      fontSize: 25,
+                      fontSize: 20,
                       isCenter: true,
-                      fontWeight: FontWeight.w500,
                     ),
                   ),
                   Opacity(
@@ -48,7 +47,7 @@ class _AlertListScreenState extends State<AlertListScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Expanded(
                   child: SingleChildScrollView(
                 child: Column(

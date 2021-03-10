@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/home_screens/search_friend_screen.dart';
 import 'package:vippicnic/screens/login_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
@@ -49,10 +48,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   enabledBorder: InputBorder.none,
                                   errorBorder: InputBorder.none,
                                   disabledBorder: InputBorder.none,
-                                  labelStyle: GoogleFonts.openSans(
+                                  labelStyle: TextStyle(
+                                      fontFamily: 'open_regular',
                                       fontWeight: FontWeight.w500,
                                       color: kPrimaryColor),
-                                  hintStyle: GoogleFonts.openSans(
+                                  hintStyle: TextStyle(
+                                      fontFamily: 'open_regular',
                                       fontWeight: FontWeight.w500,
                                       color: kPrimaryColor)),
                             ),

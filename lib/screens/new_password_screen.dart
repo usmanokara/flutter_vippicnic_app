@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
 
@@ -40,8 +39,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                   CenterText(
                     text: "New Password:",
                     textColor: kPrimaryColor,
-                    fontSize: 25,
-                    textStyle: GoogleFonts.openSans(),
+                    fontSize: 24,
                     isBold: true,
                     fontWeight: FontWeight.w900,
                     isCenter: true,
@@ -51,16 +49,17 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                     text: "Enter your new password",
                     textColor: kPrimaryColor.withOpacity(0.8),
                     fontSize: 18,
-                    textStyle: GoogleFonts.openSans(),
                     isCenter: true,
                   ),
                   SizedBox(height: 20),
                   InputTyoe(
+                    textAlign: TextAlign.center,
                     hint: "New Password",
                     onTextChange: (text) {},
                   ),
                   SizedBox(height: 10),
                   InputTyoe(
+                    textAlign: TextAlign.center,
                     hint: "Confirm Password",
                     onTextChange: (text) {},
                   ),
@@ -72,7 +71,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                     onPressed: () {},
                     child: Container(
                       width: double.infinity,
-                      height: 55,
+                      height: 50,
                       child: Stack(
                         children: [
                           Center(
@@ -80,7 +79,6 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                               text: "save password".toUpperCase(),
                               textColor: Colors.white,
                               fontSize: 20,
-                              isBold: true,
                             ),
                           ),
                           Positioned(

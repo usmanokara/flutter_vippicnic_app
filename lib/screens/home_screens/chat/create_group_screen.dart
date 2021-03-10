@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
 
@@ -101,10 +100,8 @@ class _CreateGroupScreenState extends State<CreateGroupScreen> {
                               enabledBorder: InputBorder.none,
                               errorBorder: InputBorder.none,
                               disabledBorder: InputBorder.none,
-                              labelStyle: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.w500),
-                              hintStyle: GoogleFonts.openSans(
-                                  fontWeight: FontWeight.w500)),
+                              labelStyle: TextStyle(fontFamily: 'open_regular'),
+                              hintStyle: TextStyle(fontFamily: 'open_regular')),
                         ),
                       ),
                       decoration: BoxDecoration(

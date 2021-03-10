@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/new_password_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -41,8 +40,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   CenterText(
                     text: "Forgot Password?",
                     textColor: kPrimaryColor,
-                    fontSize: 25,
-                    textStyle: GoogleFonts.openSans(),
+                    fontSize: 24,
                     isBold: true,
                     fontWeight: FontWeight.w900,
                     isCenter: true,
@@ -53,7 +51,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         "Enter your email and we will\nsend you instructions on how\nto reset your password",
                     textColor: kPrimaryColor.withOpacity(0.8),
                     fontSize: 18,
-                    textStyle: GoogleFonts.openSans(),
                     isCenter: true,
                   ),
                   SizedBox(height: 15),
@@ -70,7 +67,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         Navigator.pushNamed(context, NewPasswordScreen.ID),
                     child: Container(
                       width: double.infinity,
-                      height: 55,
+                      height: 50,
                       child: Stack(
                         children: [
                           Center(

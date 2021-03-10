@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CenterText extends StatelessWidget {
   CenterText(
@@ -9,7 +8,8 @@ class CenterText extends StatelessWidget {
       this.textStyle,
       this.isBold,
       this.isCenter,
-      this.maxLines,this.fontWeight});
+      this.maxLines,
+      this.fontWeight});
 
   final String text;
   final Color textColor;
@@ -24,7 +24,7 @@ class CenterText extends StatelessWidget {
   Widget build(BuildContext context) {
     isBold = isBold ?? false;
     isCenter = isCenter ?? false;
-    textStyle = textStyle ?? GoogleFonts.openSans();
+    textStyle = textStyle ?? TextStyle(fontFamily: 'open_regular');
     fontWeight = fontWeight ?? FontWeight.normal;
     if (isCenter) {
       if (maxLines != null)
@@ -36,9 +36,7 @@ class CenterText extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               textAlign: isCenter ? TextAlign.center : TextAlign.start,
               style: textStyle.copyWith(
-                  color: textColor,
-                  fontSize: fontSize,
-                  fontWeight: fontWeight),
+                  color: textColor, fontSize: fontSize, fontWeight: fontWeight),
             ),
           ),
         );
@@ -49,24 +47,21 @@ class CenterText extends StatelessWidget {
               this.text,
               textAlign: isCenter ? TextAlign.center : TextAlign.start,
               style: textStyle.copyWith(
-                  color: textColor,
-                  fontSize: fontSize,
-                  fontWeight: fontWeight),
+                  color: textColor, fontSize: fontSize, fontWeight: fontWeight),
             ),
           ),
         );
     } else {
       if (maxLines != null) {
         return Container(
-          child: Text(
-            this.text,
-            maxLines: maxLines,
-            overflow: TextOverflow.ellipsis,
-            textAlign: isCenter ? TextAlign.center : TextAlign.start,
-            style: textStyle.copyWith(
+          child: Text(this.text,
+              maxLines: maxLines,
+              overflow: TextOverflow.ellipsis,
+              textAlign: isCenter ? TextAlign.center : TextAlign.start,
+              style: textStyle.copyWith(
                 color: textColor,
                 fontSize: fontSize,
-          )),
+              )),
         );
       } else
         return Container(
@@ -74,9 +69,7 @@ class CenterText extends StatelessWidget {
             this.text,
             textAlign: isCenter ? TextAlign.center : TextAlign.start,
             style: textStyle.copyWith(
-                color: textColor,
-                fontSize: fontSize,
-                fontWeight: fontWeight),
+                color: textColor, fontSize: fontSize, fontWeight: fontWeight),
           ),
         );
     }

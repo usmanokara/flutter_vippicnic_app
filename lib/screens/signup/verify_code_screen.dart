@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/signup/create_account_password.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -42,7 +41,9 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                     text: "Verification Code",
                     textColor: kPrimaryColor,
                     fontSize: 25,
-                    textStyle: GoogleFonts.openSans(),
+                    textStyle: TextStyle(
+                      fontFamily: 'open_regular',
+                    ),
                     isBold: true,
                     fontWeight: FontWeight.w900,
                     isCenter: true,
@@ -52,7 +53,9 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                     text: "Please enter Code",
                     textColor: kPrimaryColor.withOpacity(0.9),
                     fontSize: 18,
-                    textStyle: GoogleFonts.openSans(),
+                    textStyle: TextStyle(
+                      fontFamily: 'open_regular',
+                    ),
                     isCenter: true,
                   ),
                   SizedBox(height: 40),
@@ -118,7 +121,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                         Navigator.pushNamed(context, CreateAccountPassword.ID),
                     child: Container(
                       width: double.infinity,
-                      height: 55,
+                      height: 50,
                       child: Stack(
                         children: [
                           Center(
@@ -147,7 +150,9 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                     text: "Resend Code",
                     textColor: kSecondryColor,
                     fontSize: 18,
-                    textStyle: GoogleFonts.openSans(),
+                    textStyle: TextStyle(
+                      fontFamily: 'open_regular',
+                    ),
                     isCenter: true,
                   )
                 ],

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:vippicnic/screens/signup/verify_email_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
@@ -22,11 +21,10 @@ class CreateAccountScreen extends StatefulWidget {
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
   File file;
 
-  final picker = ImagePicker();
-
   Future getImage(ImageSource imageSource) async {
+    final picker = ImagePicker();
     final pickedFile = await picker.getImage(source: imageSource);
-
+    if (pickedFile == null) return;
     setState(() {
       if (pickedFile != null) {
         file = File(pickedFile.path);
@@ -54,11 +52,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   CenterText(
                     text: "Account Details",
                     textColor: kPrimaryColor,
-                    fontSize: 25,
-                    textStyle: GoogleFonts.openSans(),
-                    isBold: true,
+                    fontSize: 22,
+                    textStyle: TextStyle(
+                      fontFamily: 'open_bold',),
                     isCenter: true,
-                    fontWeight: FontWeight.w900,
                   ),
                   SizedBox(height: 15),
                   Stack(
@@ -66,10 +63,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: Container(
-                          width: 150,
-                          height: 150,
+                          width: 120,
+                          height: 120,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(75),
+                              borderRadius: BorderRadius.circular(60),
                               color: Colors.white,
                               boxShadow: [
                                 BoxShadow(
@@ -84,15 +81,15 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                             child: file == null
                                 ? SvgPicture.asset(
                                     "assets/svg/user_avatar.svg",
-                                    width: 120,
-                                    height: 120,
+                                    width: 100,
+                                    height: 100,
                                   )
                                 : ClipRRect(
-                                    borderRadius: BorderRadius.circular(60),
+                                    borderRadius: BorderRadius.circular(50),
                                     child: Image.file(
                                       file,
-                                      width: 120,
-                                      height: 120,
+                                      width: 100,
+                                      height: 100,
                                       fit: BoxFit.fill,
                                     ),
                                   ),
@@ -165,7 +162,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         Navigator.pushNamed(context, VerifyEmailScreen.ID),
                     child: Container(
                       width: double.infinity,
-                      height: 55,
+                      height: 50,
                       child: Stack(
                         children: [
                           Center(

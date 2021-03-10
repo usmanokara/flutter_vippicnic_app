@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/cache_image.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -35,7 +34,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   Stack(
                     children: [
                       Container(
-                        height: 500,
+                        height: MediaQuery.of(context).size.height * 0.45,
                         width: double.infinity,
                         child: PageView(
                           onPageChanged: (index) {
@@ -79,7 +78,9 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   ),
                   Column(
                     children: [
-                      SizedBox(height: 480),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.40,
+                      ),
                       Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -114,8 +115,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
-                      CommentItem(imageList: imageList),
+                       CommentItem(imageList: imageList),
                       CommentItem(imageList: imageList),
                       CommentItem(imageList: imageList),
                       CommentItem(imageList: imageList),
@@ -124,7 +124,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   ),
                   SafeArea(
                     child: GestureDetector(
-                      onTap: ()=>Navigator.pop(context ),
+                      onTap: () => Navigator.pop(context),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
                             vertical: 20, horizontal: 10),
@@ -174,10 +174,12 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                                     enabledBorder: InputBorder.none,
                                     errorBorder: InputBorder.none,
                                     disabledBorder: InputBorder.none,
-                                    labelStyle: GoogleFonts.openSans(
+                                    labelStyle: TextStyle(
+                                        fontFamily: 'open_regular',
                                         fontWeight: FontWeight.w500,
                                         color: kPrimaryColor),
-                                    hintStyle: GoogleFonts.openSans(
+                                    hintStyle: TextStyle(
+                                        fontFamily: 'open_regular',
                                         fontWeight: FontWeight.w500,
                                         color: kPrimaryColor)),
                               ),
@@ -240,7 +242,9 @@ class CommentItem extends StatelessWidget {
                       text: "username",
                       textColor: kPrimaryColor,
                       fontSize: 18,
-                      fontWeight: FontWeight.w900,
+                      textStyle: TextStyle(
+                        fontFamily: 'open_semibold'
+                      ),
                     )
                   ],
                 ),
@@ -249,7 +253,7 @@ class CommentItem extends StatelessWidget {
                   maxLines: 2,
                   text: "Good eye for details.",
                   textColor: kPrimaryColor.withOpacity(1),
-                  fontSize: 18,
+                  fontSize: 16,
                 )
               ],
             ),

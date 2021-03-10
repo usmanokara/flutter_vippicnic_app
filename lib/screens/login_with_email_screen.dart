@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:vippicnic/screens/signup/create_account_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -39,15 +37,17 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                     children: [
                       Image.asset(
                         "assets/images/logo.png",
-                        width: MediaQuery.of(context).size.width * 0.45,
+                        width: MediaQuery.of(context).size.width * 0.35,
                       ),
                       SizedBox(height: 15),
                       InputTyoe(
+                        textAlign: TextAlign.center,
                         hint: "Username",
                         onTextChange: (text) {},
                       ),
                       SizedBox(height: 10),
                       InputTyoe(
+                        textAlign: TextAlign.center,
                         hint: "Password",
                         onTextChange: (text) {},
                         textInputType: TextInputType.visiblePassword,
@@ -61,7 +61,7 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                             context, HomeBottomNavigation.ID),
                         child: Container(
                           width: double.infinity,
-                          height: 55,
+                          height: 50,
                           child: Stack(
                             children: [
                               Center(
@@ -144,14 +144,14 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                             context, CreateAccountScreen.ID),
                         child: Container(
                           width: double.infinity,
-                          height: 55,
+                          height: 50,
                           child: Stack(
                             children: [
                               Center(
                                 child: CenterText(
                                     text: "Create account".toUpperCase(),
                                     textColor: kPrimaryColor,
-                                    fontSize: 20),
+                                    fontSize: 19),
                               ),
                               Positioned(
                                   right: 5,
@@ -172,7 +172,8 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                           textAlign: TextAlign.center,
                           text: TextSpan(
                             text: "By tapping Log In, you agree with our\n",
-                            style: GoogleFonts.openSans(
+                            style: TextStyle(
+                              fontFamily: 'open_regular',
                               fontSize: 16.0,
                               color: kPrimaryColor,
                             ),

@@ -27,17 +27,19 @@ class SelfiesFullImage extends StatelessWidget {
             children: <Widget>[
               new Align(
                 alignment: Alignment.center,
-                child: CachedNetworkImage(
-                  useOldImageOnUrlChange: false,
-                  fit: BoxFit.contain,
-                  imageUrl: imgPath,
-                  placeholder: (context, url) => SizedBox(
-                    child: NativeProgress(),
-                    height: 30.0,
-                    width: 20.0,
+                child: InteractiveViewer(
+                  child: CachedNetworkImage(
+                    useOldImageOnUrlChange: false,
+                    fit: BoxFit.contain,
+                    imageUrl: imgPath,
+                    placeholder: (context, url) => SizedBox(
+                      child: NativeProgress(),
+                      height: 30.0,
+                      width: 20.0,
+                    ),
+                    errorWidget: (context, url, error) =>
+                        Icon(Icons.error_outline),
                   ),
-                  errorWidget: (context, url, error) =>
-                      Icon(Icons.error_outline),
                 ),
               ),
               new Align(
@@ -50,7 +52,7 @@ class SelfiesFullImage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Card(
-                          shape:CircleBorder(),
+                          shape: CircleBorder(),
                           child: IconButton(
                             icon: Icon(
                               Icons.close,
