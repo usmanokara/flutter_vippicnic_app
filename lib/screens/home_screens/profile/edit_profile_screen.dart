@@ -21,7 +21,6 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   File file;
-
   final picker = ImagePicker();
   String _name = "";
   String _bio;
