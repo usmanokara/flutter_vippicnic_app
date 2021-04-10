@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vippicnic/screens/login_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/widgets/center_text.dart';
@@ -36,7 +39,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   textColor: kPrimaryColor.withOpacity(0.5),
                   fontSize: 28,
                   isCenter: true,
-
                 ),
               ],
             ),

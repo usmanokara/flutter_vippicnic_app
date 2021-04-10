@@ -1,15 +1,19 @@
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:vippicnic/screens/forgot_password_Screen.dart';
 import 'package:vippicnic/screens/home_screens/home_bottom_sheet.dart';
 import 'package:vippicnic/screens/login_with_email_screen.dart';
 import 'package:vippicnic/screens/signup/create_account_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
+import 'package:vippicnic/utils/dialogs.dart';
 import 'package:vippicnic/widgets/center_text.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -21,6 +25,46 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool _keepMeLogedIn = true;
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future signInWithGoogle() async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleSignInAuthentication.accessToken,
+      idToken: googleSignInAuthentication.idToken,
+    );
+
+    final UserCredential authResult =
+        await _auth.signInWithCredential(credential);
+    final User user = authResult.user;
+
+    if (user != null) {
+      assert(!user.isAnonymous);
+      assert(await user.getIdToken() != null);
+      final User currentUser = _auth.currentUser;
+      assert(user.uid == currentUser.uid);
+      return user;
+    }
+
+    return null;
+  }
+
+  Future signInWithFacebook() async {
+    // Trigger the sign-in flow
+    var accessToken = await FacebookAuth.instance.login();
+
+    final FacebookAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(accessToken.accessToken.token);
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance
+        .signInWithCredential(facebookAuthCredential);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +107,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ],
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          signInWithGoogle()
+                              .then((value) {})
+                              .catchError((onError) {
+                            AppDialog().showOSDialog(context, "Erroe",
+                                onError.toString(), "OK", () {});
+                          });
+                        },
                       ),
                       SizedBox(height: 15),
                       MaterialButton(

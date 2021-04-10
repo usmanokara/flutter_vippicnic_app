@@ -84,206 +84,198 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               SizedBox(height: 20),
               Expanded(
                   child: SingleChildScrollView(
-                    child: Column(
+                child: Column(
+                  children: [
+                    Stack(
                       children: [
-                        Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Container(
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(75),
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 2.5,
-                                        blurRadius: 3.5,
-                                        offset: Offset(
-                                            0,
-                                            1.5), // changes position of shadow
-                                      ),
-                                    ]),
-                                child: Center(
-                                  child: file == null
-                                      ? SvgPicture.asset(
-                                    "assets/svg/user_avatar.svg",
-                                    width: 120,
-                                    height: 120,
-                                  )
-                                      : ClipRRect(
-                                    borderRadius: BorderRadius.circular(60),
-                                    child: Image.file(
-                                      file,
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Container(
+                            width: 150,
+                            height: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(75),
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 2.5,
+                                    blurRadius: 3.5,
+                                    offset: Offset(
+                                        0, 1.5), // changes position of shadow
+                                  ),
+                                ]),
+                            child: Center(
+                              child: file == null
+                                  ? SvgPicture.asset(
+                                      "assets/svg/user_avatar.svg",
                                       width: 120,
                                       height: 120,
-                                      fit: BoxFit.fill,
+                                    )
+                                  : ClipRRect(
+                                      borderRadius: BorderRadius.circular(60),
+                                      child: Image.file(
+                                        file,
+                                        width: 120,
+                                        height: 120,
+                                        fit: BoxFit.fill,
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              right: 3,
-                              bottom: 10,
-                              child: CircleAvatar(
-                                radius: 22,
-                                backgroundColor: Colors.white,
-                                child: Padding(
-                                  padding:
-                                  const EdgeInsets.only(right: 5, bottom: 12),
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      if (file != null) {
-                                        setState(() {
-                                          file = null;
-                                        });
-                                        return;
-                                      }
-                                      showModalBottomSheet(
-                                          context: context,
-                                          builder: (_) {
-                                            return CameraGalleryBottomSheet(
-                                                cameraClick: () {
-                                                  getImage(ImageSource.camera);
-                                                }, galleryClick: () {
-                                              getImage(ImageSource.gallery);
-                                            });
-                                          });
-                                    },
-                                    child: Icon(
-                                      file == null
-                                          ? Icons.add_circle
-                                          : Icons.remove_circle,
-                                      size: 45,
-                                      color: kSecondryColor,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                        CenterText(
-                          text: "Username:",
-                          textColor: kPrimaryColor,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w900,
-                        ),
-                        SizedBox(height: 20),
-                        UpdateProfileItem(
-                          title: "Name:",
-                          value: _name,
-                          onTap: () async {
-                            _name = await showInoutDialog("Name:", _name) ??
-                                _name;
-                            setState(() {});
-                          },
-                        ),
-                        SizedBox(height: 10),
-                        UpdateProfileItem(
-                          title: "Bio:",
-                          value: _bio,
-                          onTap: () async {
-                            _name = await showInoutDialog("Bio:", _bio) ?? _bio;
-                            setState(() {});
-                          },
-                        ),
-                        SizedBox(height: 15),
-                        UpdateProfileItem(
-                          title: "Date of Birth:",
-                          value: _dob,
-                          onTap: () async {
-                            _name = await showInoutDialog(
-                                "Date of Birth:", _dob) ??
-                                _dob;
-                            setState(() {});
-                          },
-                        ),
-                        SizedBox(height: 15),
-                        UpdateProfileItem(
-                          title: "Email:",
-                          value: _email,
-                          onTap: () async {
-                            _name =
-                                await showInoutDialog("Email:", _email) ??
-                                    _email;
-                            setState(() {});
-                          },
-                        ),
-                        SizedBox(height: 15),
-                        UpdateProfileItem(
-                          title: "Phone:",
-                          value: _phone,
-                          onTap: () async {
-                            _name =
-                                await showInoutDialog("Phone:", _phone) ??
-                                    _phone;
-                            setState(() {});
-                          },
-                        ),
-                        SizedBox(height: 15),
-                        UpdateProfileItem(
-                          title: "Address",
-                          value: _address,
-                          onTap: () async {
-                            _name = await showInoutDialog(
-                                "Address:", _address) ??
-                                _address;
-                            setState(() {});
-                          },
-                        ),
-                        SizedBox(height: 15),
-                        UpdateProfileItem(
-                          title: "Password:",
-                          value: _password,
-                          onTap: () async {
-                            _name = await showInoutDialog(
-                                "Password:", _password) ??
-                                _password;
-                            setState(() {});
-                          },
-                        ),
-                        SizedBox(height: 15),
-                        MaterialButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)),
-                          color: kSecondryColor,
-                          onPressed: () =>
-                              Navigator.pushNamed(
-                                  context, VerifyEmailScreen.ID),
-                          child: Container(
-                            width: double.infinity,
-                            height: 55,
-                            child: Stack(
-                              children: [
-                                Center(
-                                  child: CenterText(
-                                    text: "Update".toUpperCase(),
-                                    textColor: Colors.white,
-                                    fontSize: 20,
-                                    isBold: true,
-                                  ),
-                                ),
-                                Positioned(
-                                    right: 5,
-                                    top: 0,
-                                    bottom: 0,
-                                    child: Icon(
-                                      Icons.chevron_right,
-                                      color: Colors.white,
-                                      size: 30,
-                                    ))
-                              ],
                             ),
                           ),
                         ),
-                        SizedBox(height: 15),
+                        Positioned(
+                          right: 3,
+                          bottom: 10,
+                          child: CircleAvatar(
+                            radius: 22,
+                            backgroundColor: Colors.white,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(right: 5, bottom: 12),
+                              child: GestureDetector(
+                                onTap: () {
+                                  if (file != null) {
+                                    setState(() {
+                                      file = null;
+                                    });
+                                    return;
+                                  }
+                                  showModalBottomSheet(
+                                      context: context,
+                                      builder: (_) {
+                                        return CameraGalleryBottomSheet(
+                                            cameraClick: () {
+                                          getImage(ImageSource.camera);
+                                        }, galleryClick: () {
+                                          getImage(ImageSource.gallery);
+                                        });
+                                      });
+                                },
+                                child: Icon(
+                                  file == null
+                                      ? Icons.add_circle
+                                      : Icons.remove_circle,
+                                  size: 45,
+                                  color: kSecondryColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
-                  ))
+                    CenterText(
+                      text: "Username:",
+                      textColor: kPrimaryColor,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w900,
+                    ),
+                    SizedBox(height: 20),
+                    UpdateProfileItem(
+                      title: "Name:",
+                      value: _name,
+                      onTap: () async {
+                        _name = await showInoutDialog("Name:", _name) ?? _name;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 10),
+                    UpdateProfileItem(
+                      title: "Bio:",
+                      value: _bio,
+                      onTap: () async {
+                        _name = await showInoutDialog("Bio:", _bio) ?? _bio;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 15),
+                    UpdateProfileItem(
+                      title: "Date of Birth:",
+                      value: _dob,
+                      onTap: () async {
+                        _name = await showInoutDialog("Date of Birth:", _dob) ??
+                            _dob;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 15),
+                    UpdateProfileItem(
+                      title: "Email:",
+                      value: _email,
+                      onTap: () async {
+                        _name =
+                            await showInoutDialog("Email:", _email) ?? _email;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 15),
+                    UpdateProfileItem(
+                      title: "Phone:",
+                      value: _phone,
+                      onTap: () async {
+                        _name =
+                            await showInoutDialog("Phone:", _phone) ?? _phone;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 15),
+                    UpdateProfileItem(
+                      title: "Address",
+                      value: _address,
+                      onTap: () async {
+                        _name = await showInoutDialog("Address:", _address) ??
+                            _address;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 15),
+                    UpdateProfileItem(
+                      title: "Password:",
+                      value: _password,
+                      onTap: () async {
+                        _name = await showInoutDialog("Password:", _password) ??
+                            _password;
+                        setState(() {});
+                      },
+                    ),
+                    SizedBox(height: 15),
+                    MaterialButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                      color: kSecondryColor,
+                      onPressed: () =>
+                          Navigator.pushNamed(context, VerifyEmailScreen.ID),
+                      child: Container(
+                        width: double.infinity,
+                        height: 55,
+                        child: Stack(
+                          children: [
+                            Center(
+                              child: CenterText(
+                                text: "Update".toUpperCase(),
+                                textColor: Colors.white,
+                                fontSize: 20,
+                                isBold: true,
+                              ),
+                            ),
+                            Positioned(
+                                right: 5,
+                                top: 0,
+                                bottom: 0,
+                                child: Icon(
+                                  Icons.chevron_right,
+                                  color: Colors.white,
+                                  size: 30,
+                                ))
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                  ],
+                ),
+              ))
             ],
           ),
         ),
@@ -410,10 +402,10 @@ class UpdateProfileItem extends StatelessWidget {
           children: [
             Expanded(
                 child: CenterText(
-                  text: "$title:$value",
-                  textColor: kPrimaryColor,
-                  fontSize: 18,
-                )),
+              text: "$title:$value",
+              textColor: kPrimaryColor,
+              fontSize: 18,
+            )),
             GestureDetector(
               onTap: onTap,
               child: Icon(
