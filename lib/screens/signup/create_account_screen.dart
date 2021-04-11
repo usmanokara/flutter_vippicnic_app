@@ -1,9 +1,8 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:vippicnic/models/user_model.dart';
 import 'package:vippicnic/screens/signup/verify_email_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
 import 'package:vippicnic/utils/dialogs.dart';
@@ -12,7 +11,7 @@ import 'package:vippicnic/widgets/center_text.dart';
 import '../login_screen.dart';
 
 class CreateAccountScreen extends StatefulWidget {
-  static String ID = "/create_account_screen";
+  static const String ID = "/create_account_screen";
 
   @override
   _CreateAccountScreenState createState() => _CreateAccountScreenState();
@@ -20,6 +19,9 @@ class CreateAccountScreen extends StatefulWidget {
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
   File file;
+  String username;
+  String firstName;
+  String lastName;
 
   Future getImage(ImageSource imageSource) async {
     final picker = ImagePicker();
@@ -54,7 +56,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     textColor: kPrimaryColor,
                     fontSize: 22,
                     textStyle: TextStyle(
-                      fontFamily: 'open_bold',),
+                      fontFamily: 'open_bold',
+                    ),
                     isCenter: true,
                   ),
                   SizedBox(height: 15),
@@ -141,25 +144,61 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   SizedBox(height: 20),
                   InputTyoe(
                     hint: "Username:",
-                    onTextChange: (text) {},
+                    onTextChange: (text) => username = text,
                   ),
                   SizedBox(height: 10),
                   InputTyoe(
                     hint: "FirstName:",
-                    onTextChange: (text) {},
+                    onTextChange: (text) => firstName = text,
                   ),
                   SizedBox(height: 15),
                   InputTyoe(
                     hint: "Last Name:",
-                    onTextChange: (text) {},
+                    onTextChange: (text) => lastName = text,
                   ),
                   SizedBox(height: 15),
                   MaterialButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     color: kSecondryColor,
-                    onPressed: () =>
-                        Navigator.pushNamed(context, VerifyEmailScreen.ID),
+                    onPressed: () {
+                      if (username == null || username.isEmpty) {
+                        AppDialog().showOSDialog(context, "Invalid",
+                            "Username is required", "Ok", null);
+                        return;
+                      }
+                      if (firstName == null || firstName.isEmpty) {
+                        AppDialog().showOSDialog(context, "Invalid",
+                            "First Name is required", "Ok", null);
+                        return;
+                      }
+                      if (lastName == null || lastName.isEmpty) {
+                        AppDialog().showOSDialog(context, "Invalid",
+                            "Last Name is required", "Ok", null);
+                        return;
+                      }
+                      // if (file == null) {
+                      //   AppDialog().showOSDialog(context, "Invalid",
+                      //       "Image is required", "Ok", null);
+                      //   return;
+                      // }
+                      // if (password == null || password.isEmpty) {
+                      // AppDialog().showOSDialog(
+                      // context, Invalid, "Password is required", Ok, null);
+                      // return;
+                      // }
+                      // if (password.length < 6) {
+                      // AppDialog().showOSDialog(context, Invalid,
+                      // "At least 6 character is required", Ok, null);
+                      // return;
+                      // }
+                      String displayName = "$firstName $lastName";
+                      Constants.currentUser = UserModel(
+                          displayName: displayName,
+                          username: username,
+                          image: file);
+                      Navigator.pushNamed(context, VerifyEmailScreen.ID);
+                    },
                     child: Container(
                       width: double.infinity,
                       height: 50,

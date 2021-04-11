@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:vippicnic/screens/welcome_screen.dart';
+import 'welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -9,24 +8,28 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 5),(){
+  Future<void> _initApp() async {
+    await Firebase.initializeApp();
+    Future.delayed(Duration(seconds: 5), () {
       Navigator.pushNamed(context, WelcomeScreen.ID);
     });
   }
+
+  @override
+  void initState() {
+    _initApp();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
-      child: Image.asset(
-        "assets/images/logo.png",
-        width: MediaQuery.of(context).size.width * 0.45,
-      ),
-    ));
+          child: Image.asset(
+            "assets/images/logo.png",
+            width: MediaQuery.of(context).size.width * 0.45,
+          ),
+        ));
   }
 }

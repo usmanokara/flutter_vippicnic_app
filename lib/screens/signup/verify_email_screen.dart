@@ -1,20 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:vippicnic/screens/signup/verify_code_screen.dart';
 import 'package:vippicnic/utils/constants.dart';
+import 'package:vippicnic/utils/dialogs.dart';
 import 'package:vippicnic/widgets/center_text.dart';
-
+import '../../utils/constants.dart';
 import '../login_screen.dart';
+import 'create_account_password.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
-  static String ID = "/verify_email_screen";
+  static const String ID = "/verify_email_screen";
 
   @override
   _VerifyEmailScreenState createState() => _VerifyEmailScreenState();
 }
 
 class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
+  final formKey = GlobalKey<FormState>();
+  String _email;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,8 +35,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     text: "Verify Your E-mail",
                     textColor: kPrimaryColor,
                     fontSize: 25,
-                    textStyle: TextStyle(
-                      fontFamily: 'open_regular'),
+                    textStyle: TextStyle(fontFamily: 'open_regular'),
                     isBold: true,
                     fontWeight: FontWeight.w900,
                     isCenter: true,
@@ -48,17 +49,31 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                     isCenter: true,
                   ),
                   SizedBox(height: 30),
-                  InputTyoe(
-                    hint: "Email:",
-                    onTextChange: (text) {},
+                  Form(
+                    key: formKey,
+                    child: InputTyoe(
+                      hint: "Email:",
+                      validator: kEmailValidator,
+                      onTextChange: (text) => _email = text,
+                    ),
                   ),
                   SizedBox(height: 30),
                   MaterialButton(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     color: kSecondryColor,
-                    onPressed: () =>
-                        Navigator.pushNamed(context, VerifyCodeScreen.ID),
+                    onPressed: () {
+                      if (_email == null || _email.isEmpty) {
+                        AppDialog().showOSDialog(context, "Invalid",
+                            "Email is required", "Ok", null);
+                        return;
+                      }
+                      if (formKey.currentState.validate()) {
+                        formKey.currentState.save();
+                        Constants.currentUser.email = _email;
+                        Navigator.pushNamed(context, CreateAccountPassword.ID);
+                      }
+                    },
                     child: Container(
                       width: double.infinity,
                       height: 50,
