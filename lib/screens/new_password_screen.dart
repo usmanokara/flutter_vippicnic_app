@@ -1,13 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:vippicnic/utils/constants.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:vippicnic/widgets/center_text.dart';
 
+import '../utils/constants.dart';
+import '../utils/dialogs.dart';
 import 'login_screen.dart';
+import 'signup/verify_code_screen.dart';
 
 class NewPasswordScreen extends StatefulWidget {
-  static String ID = "/new_password_screen";
+  static const String ID = "/new_password_screen";
 
   @override
   _NewPasswordScreenState createState() => _NewPasswordScreenState();

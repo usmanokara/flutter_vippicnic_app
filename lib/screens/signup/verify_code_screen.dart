@@ -117,8 +117,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     color: kSecondryColor,
-                    onPressed: () =>
-                        Navigator.pushNamed(context, CreateAccountPassword.ID),
+                    onPressed: () {},
                     child: Container(
                       width: double.infinity,
                       height: 50,

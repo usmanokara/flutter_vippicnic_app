@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1008592315063",
+    "project_id": "vippicnic-12a71",
+    "storage_bucket": "vippicnic-12a71.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008592315063:android:0961f64cea9a3e748a2332",
+        "android_client_info": {
+          "package_name": "com.dotsbit.vippicnic.vippicnic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008592315063-i5cd6qejqkcnvaevlgslv265oc5mf24k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5is5OWHCdQ8H0QWDuceJ2Z6_FVLgDpd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008592315063-i5cd6qejqkcnvaevlgslv265oc5mf24k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
